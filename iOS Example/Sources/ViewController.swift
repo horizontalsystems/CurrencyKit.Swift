@@ -43,19 +43,22 @@ extension ViewController: SectionsDataSource {
 
     private func row(index: Int, currency: Currency) -> RowProtocol {
         let isLast = currencyKit.currencies.count - 1 == index
-        return CellBuilder.selectableRow(
-                elements: [.text],
-                tableView: tableView,
-                id: "some",
-                height: 50,
-                autoDeselect: true,
-                bind: { cell in
-                    cell.set(backgroundStyle: .lawrence, isFirst: index == 0, isLast: isLast)
-
-                    cell.bind(index: 0) { (component: TextComponent) in
+        return CellBuilderNew.row(
+                rootElement: .hStack([
+                    .image32 { component in
+                        component.imageView.image = Kit.currencyIcon(code: currency.code)
+                    },
+                    .text { component in
                         component.text = "\(currency.code) - \(currency.symbol)"
                     }
-                })
+                ]),
+                tableView: tableView,
+                id: "some",
+                height: 60,
+                bind: { cell in
+                    cell.set(backgroundStyle: .lawrence, isFirst: index == 0, isLast: isLast)
+                }
+        )
     }
 
     func buildSections() -> [SectionProtocol] {

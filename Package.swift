@@ -13,14 +13,12 @@ let package = Package(
                     targets: ["CurrencyKit"]),
         ],
         dependencies: [
-            .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.1")),
-            .package(url: "https://github.com/horizontalsystems/StorageKit.Swift.git", .upToNextMajor(from: "1.0.0")),
+            .package(url: "https://github.com/horizontalsystems/StorageKit.Swift.git", .upToNextMajor(from: "2.0.0")),
         ],
         targets: [
             .target(
                     name: "CurrencyKit",
                     dependencies: [
-                        "RxSwift",
                         .product(name: "StorageKit", package: "StorageKit.Swift"),
                     ]
             )

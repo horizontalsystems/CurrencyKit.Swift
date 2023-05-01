@@ -1,4 +1,4 @@
-import RxSwift
+import Combine
 import StorageKit
 
 public class CurrencyManager {
@@ -7,7 +7,7 @@ public class CurrencyManager {
     let currencies: [Currency]
 
     private let localStorage: ILocalStorage
-    private let subject = PublishSubject<Currency>()
+    private let subject = PassthroughSubject<Currency, Never>()
 
     init(currencies: [Currency], localStorage: ILocalStorage) {
         self.currencies = currencies
@@ -24,12 +24,12 @@ public class CurrencyManager {
         }
         set {
             localStorage.set(value: newValue.code, for: keyBaseCurrencyCode)
-            subject.onNext(newValue)
+            subject.send(newValue)
         }
     }
 
-    var baseCurrencyUpdatedObservable: Observable<Currency> {
-        subject.asObservable()
+    var baseCurrencyUpdatedPublisher: AnyPublisher<Currency, Never> {
+        subject.eraseToAnyPublisher()
     }
 
 }

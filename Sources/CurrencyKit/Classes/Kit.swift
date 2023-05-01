@@ -1,9 +1,10 @@
+import Combine
 import UIKit
 import StorageKit
-import RxSwift
 
 public class Kit {
     private static let supportedCurrencies = [
+        Currency(code: "ARS", symbol: "$",   decimal: 2),
         Currency(code: "AUD", symbol: "A$",  decimal: 2),
         Currency(code: "BRL", symbol: "R$",  decimal: 2),
         Currency(code: "CAD", symbol: "C$",  decimal: 2),
@@ -15,6 +16,8 @@ public class Kit {
         Currency(code: "ILS", symbol: "₪",   decimal: 2),
         Currency(code: "INR", symbol: "₹",   decimal: 2),
         Currency(code: "JPY", symbol: "¥",   decimal: 2),
+        Currency(code: "NOK", symbol: "kr",  decimal: 2),
+        Currency(code: "PHP", symbol: "₱",   decimal: 2),
         Currency(code: "RUB", symbol: "₽",   decimal: 2),
         Currency(code: "SGD", symbol: "S$",  decimal: 2),
         Currency(code: "USD", symbol: "$",   decimal: 2),
@@ -48,8 +51,8 @@ extension Kit {
         currencyManager.currencies
     }
 
-    public var baseCurrencyUpdatedObservable: Observable<Currency> {
-        currencyManager.baseCurrencyUpdatedObservable
+    public var baseCurrencyUpdatedPublisher: AnyPublisher<Currency, Never> {
+        currencyManager.baseCurrencyUpdatedPublisher
     }
 
     public static func currencyIcon(code: String) -> UIImage? {
