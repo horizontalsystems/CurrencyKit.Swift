@@ -13,6 +13,7 @@ public class Kit {
         Currency(code: "EUR", symbol: "€",   decimal: 2),
         Currency(code: "GBP", symbol: "£",   decimal: 2),
         Currency(code: "HKD", symbol: "HK$", decimal: 2),
+        Currency(code: "HUF", symbol: "Ft",  decimal: 2),
         Currency(code: "ILS", symbol: "₪",   decimal: 2),
         Currency(code: "INR", symbol: "₹",   decimal: 2),
         Currency(code: "JPY", symbol: "¥",   decimal: 2),
