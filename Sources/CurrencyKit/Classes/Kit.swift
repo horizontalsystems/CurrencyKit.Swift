@@ -19,6 +19,7 @@ public class Kit {
         Currency(code: "JPY", symbol: "¥",   decimal: 2),
         Currency(code: "NOK", symbol: "kr",  decimal: 2),
         Currency(code: "PHP", symbol: "₱",   decimal: 2),
+        Currency(code: "RON", symbol: "RON", decimal: 2),
         Currency(code: "RUB", symbol: "₽",   decimal: 2),
         Currency(code: "SGD", symbol: "S$",  decimal: 2),
         Currency(code: "USD", symbol: "$",   decimal: 2),
